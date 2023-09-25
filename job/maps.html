@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <title>Lokasi Kantor Urusan Agama Kabupaten Jombang</title>
+
+  <style type='text/css'>
+  #peta {
+  width: 100%;
+  height: 600px;
+
+} </style>
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+   <script type="text/javascript">
+    
+	(function() {
+  window.onload = function() {
+var map;
+    //Parameter Google maps
+    var options = {
+      zoom: 12, //level zoom
+	  //posisi tengah peta
+      center: new google.maps.LatLng(-7.5454044, 112.2297037),
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+	
+	 // Buat peta di 
+    var map = new google.maps.Map(document.getElementById('peta'), options);
+	 // Tambahkan Marker 
+     var locations = [
+               		    ['Kantor Urusan Agama (KUA) Sumobito', -7.5188046, 112.3375409],
+                   		['Kantor Urusan Agama (KUA) Jogoroto', -7.589218, 112.1984698],
+                   		['Kantor Urusan Agama (KUA) Kecamatan Tembelang', -7.4703707, 112.1718901],
+                   		['Kantor Urusan Agama (KUA) Mojowarno', -7.6420018, 112.2261858],
+                      ['Kantor Urusan Agama (KUA) Kecamatan Kesamben', -7.4621187, 112.3086277],
+                   		['Kantor Urusan Agama (KUA) Kecamatan Perak', -7.5839699, 112.1652276],
+                   		['Kantor Urusan Agama (KUA) Ploso', -7.4418128, 112.2072055],
+                   		['Kantor Urusan Agama (KUA) Megaluh', -7.5838803, 112.0273387], 
+                      ['Kantor Urusan Agama (KUA) Kecamatan Bareng', -7.6818896, 112.2897458],
+                   		['Kantor Urusan Agama (KUA) Kecamatan Gudo', -7.6818442, 112.1518579],
+                   		['Kantor Urusan Agama (KUA) Kecamatan Kabuh', -7.3987463, 112.0758584],
+                   		['Kantor Urusan Agama (KUA) Wonosalam', -7.6974947, 112.3649055], 
+                      ['Kantor Urusan Agama (KUA) Kecamatan Ngoro', -7.692519, 112.2696393],
+                   		['Kantor Urusan Agama (KUA) Diwek', -7.6818783, 112.2218964],
+                   		['Kantor Urusan Agama (KUA) BandarKedungMulyo', -7.5967591, 112.1657445],
+                   		['Kantor Urusan Agama (KUA) Peterongan', -7.5398029, 112.2749509], 
+                      ['Kantor Urusan Agama (KUA) Ngusikan', -7.5346387, 112.1640286],
+                   		['Kantor Urusan Agama (KUA) Plandaan', -7.5545773, 112.1919167],
+    
+    ];
+	  var infowindow = new google.maps.InfoWindow();
+
+    var marker, i;
+     /* kode untuk menampilkan banyak marker */
+    for (i = 0; i < locations.length; i++) {  
+      marker = new google.maps.Marker({
+        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+        map: map,
+		 icon: 'iconhijau.png'
+      });
+     /* menambahkan event clik untuk menampikan
+     	 infowindows dengan isi sesuai denga
+	    marker yang di klik */
+		
+      google.maps.event.addListener(marker, 'click', (function(marker, i) {
+        return function() {
+          infowindow.setContent(locations[i][0]);
+          infowindow.open(map, marker);
+        }
+      })(marker, i));
+    }
+  
+
+  };
+})();
+
+	</script>
+  </head>
+  <body>
+    
+    <div id="peta"></div>
+
+  </body>
+</html>
